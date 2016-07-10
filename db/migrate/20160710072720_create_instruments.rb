@@ -7,10 +7,10 @@ class CreateInstruments < ActiveRecord::Migration
       t.text :details
       t.integer :price
       t.integer :owner_id
+      
+      t.belongs_to :owner, index: true
 
       t.timestamps null: false
-      
-      t.belongs_to :user, index: true
     end
   end
 end

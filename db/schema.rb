@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160710070727) do
+ActiveRecord::Schema.define(version: 20160710072720) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,10 +25,17 @@ ActiveRecord::Schema.define(version: 20160710070727) do
     t.integer  "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "user_id"
   end
 
-  add_index "instruments", ["user_id"], name: "index_instruments_on_user_id", using: :btree
+  add_index "instruments", ["owner_id"], name: "index_instruments_on_owner_id", using: :btree
+
+  create_table "instruments_owners", id: false, force: :cascade do |t|
+    t.integer "instrument_id", null: false
+    t.integer "owner_id",      null: false
+  end
+
+  add_index "instruments_owners", ["instrument_id", "owner_id"], name: "index_instruments_owners_on_instrument_id_and_owner_id", using: :btree
+  add_index "instruments_owners", ["owner_id", "instrument_id"], name: "index_instruments_owners_on_owner_id_and_instrument_id", using: :btree
 
   create_table "owners", force: :cascade do |t|
     t.string   "name"
