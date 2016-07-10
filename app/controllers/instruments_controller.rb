@@ -17,12 +17,11 @@ class InstrumentsController < ApplicationController
   # GET /instruments/new
   def new
     @instrument = Instrument.new
-    @instrument.owner_id = current_user.id
   end
 
   # GET /instruments/1/edit
   def edit
-
+    @instrument = Instrument.new
   end
 
   # POST /instruments
