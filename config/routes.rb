@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :instruments
   resources :equipment
   
   devise_for :users, :controllers => { :registrations => 'users' }

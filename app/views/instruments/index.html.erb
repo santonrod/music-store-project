@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Instruments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Brand</th>
+      <th>Year</th>
+      <th>Details</th>
+      <th>Price</th>
+      <th>Owner</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @instruments.each do |instrument| %>
+      <tr>
+        <td><%= instrument.category %></td>
+        <td><%= instrument.brand %></td>
+        <td><%= instrument.year %></td>
+        <td><%= instrument.details %></td>
+        <td><%= instrument.price %></td>
+        <td><%= instrument.owner_id %></td>
+        <td><%= link_to 'Show', instrument %></td>
+        <td><%= link_to 'Edit', edit_instrument_path(instrument) %></td>
+        <td><%= link_to 'Destroy', instrument, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Instrument', new_instrument_path %>
