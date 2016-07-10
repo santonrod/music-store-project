@@ -31,7 +31,7 @@ class InstrumentsController < ApplicationController
 
     respond_to do |format|
       if @instrument.save
-        Owner.create(id:current_user.id, name: current_user.name, email: current_user.email)
+        Owner.create(owner_id:current_user.id, name: current_user.name, email: current_user.email)
         if current_user.owner == false
           current_user.owner = current_user.toggle! (:owner)
         else

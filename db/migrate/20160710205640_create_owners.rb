@@ -3,6 +3,7 @@ class CreateOwners < ActiveRecord::Migration
     create_table :owners do |t|
       t.string :name
       t.string :email
+      t.integer :owner_id
 
       t.timestamps null: false
     end
