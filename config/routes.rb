@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :owners
   resources :instruments
   resources :equipment
   
