@@ -25,5 +25,12 @@
   <%= @instrument.price %>
 </p>
 
-<%= link_to 'Edit', edit_instrument_path(@instrument) %> |
+<% if @instrument.owner_id == current_user.id %>
+  <td><%= link_to 'Edit', edit_instrument_path(@instrument) %></td>
+  <td><%= link_to 'Destroy', @instrument, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<% else %>
+<% end %> 
+
 <%= link_to 'Back', instruments_path %>
+
+<%= link_to 'Owners Page', instruments_path %>
