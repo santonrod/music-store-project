@@ -23,14 +23,15 @@
         <td><%= instrument.details %></td>
         <td><%= instrument.price %></td>
         <td><%= link_to 'Show', instrument %></td>
-        
-        <% if current_user.owner? %>
+
+        <% if instrument.owner_id == current_user.id %>
           <td><%= link_to 'Edit', edit_instrument_path(instrument) %></td>
           <td><%= link_to 'Destroy', instrument, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% else %>
-        <% end %>
-      </tr>
+        <% end %> 
+      <tr>
     <% end %>
+
   </tbody>
 </table>
 
