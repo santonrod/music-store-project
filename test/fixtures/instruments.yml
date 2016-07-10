@@ -4,12 +4,14 @@ one:
   category: MyString
   brand: MyString
   year: 1
-  description: MyText
+  details: MyText
   price: 1
+  owner_id: 1
 
 two:
   category: MyString
   brand: MyString
   year: 1
-  description: MyText
+  details: MyText
   price: 1
+  owner_id: 1

@@ -4,8 +4,9 @@ class CreateInstruments < ActiveRecord::Migration
       t.string :category
       t.string :brand
       t.integer :year
-      t.text :description
+      t.text :details
       t.integer :price
+      t.integer :owner_id
 
       t.timestamps null: false
     end
