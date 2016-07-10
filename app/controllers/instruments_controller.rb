@@ -1,6 +1,5 @@
 class InstrumentsController < ApplicationController
-  before_action :must_be_owner, only: [:show, :edit, :update, :destroy]
-  before_action :set_instrument, only: :show
+  before_action :set_instrument, only: [:show, :edit, :update, :destroy]
 
 
   # GET /instruments
@@ -21,7 +20,7 @@ class InstrumentsController < ApplicationController
 
   # GET /instruments/1/edit
   def edit
-    @instrument = Instrument.new
+
   end
 
   # POST /instruments
