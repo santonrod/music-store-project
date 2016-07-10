@@ -4,6 +4,7 @@ gem 'awesome_print'
 gem 'pg'
 gem 'devise', '3.4.1'
 gem 'bootstrap-sass'
+gem 'jquery-turbolinks'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use sqlite3 as the database for Active Record
