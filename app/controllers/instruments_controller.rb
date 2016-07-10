@@ -1,5 +1,7 @@
 class InstrumentsController < ApplicationController
-  before_action :set_instrument, only: [:show, :edit, :update, :destroy]
+  before_action :must_be_owner, only: [:show, :edit, :update, :destroy]
+  before_action :set_instrument, only: :show
+
 
   # GET /instruments
   # GET /instruments.json
@@ -19,6 +21,7 @@ class InstrumentsController < ApplicationController
 
   # GET /instruments/1/edit
   def edit
+
   end
 
   # POST /instruments
@@ -65,6 +68,11 @@ class InstrumentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_instrument
       @instrument = Instrument.find(params[:id])
+    end
+
+    def must_be_owner
+    unless current_user && current_user.owner?
+    end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
