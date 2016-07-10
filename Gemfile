@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'awesome_print'
-
+gem 'pg'
 gem 'devise', '3.4.1'
 gem 'bootstrap-sass'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
