@@ -9,6 +9,8 @@ class CreateInstruments < ActiveRecord::Migration
       t.integer :owner_id
 
       t.timestamps null: false
+      
+      t.belongs_to :user, index: true
     end
   end
 end
