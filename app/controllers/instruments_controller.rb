@@ -17,6 +17,7 @@ class InstrumentsController < ApplicationController
   # GET /instruments/new
   def new
     @instrument = Instrument.new
+    @instrument.owner_id = current_user.id
   end
 
   # GET /instruments/1/edit
@@ -28,6 +29,7 @@ class InstrumentsController < ApplicationController
   # POST /instruments.json
   def create
     @instrument = Instrument.new(instrument_params)
+    @instrument.owner_id = current_user.id
 
     respond_to do |format|
       if @instrument.save
