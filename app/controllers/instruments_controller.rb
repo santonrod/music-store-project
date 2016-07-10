@@ -31,6 +31,7 @@ class InstrumentsController < ApplicationController
 
     respond_to do |format|
       if @instrument.save
+        current_user.toggle! :owner
         format.html { redirect_to @instrument, notice: 'Instrument was successfully created.' }
         format.json { render :show, status: :created, location: @instrument }
       else
@@ -71,8 +72,8 @@ class InstrumentsController < ApplicationController
     end
 
     def must_be_owner
-    unless current_user && current_user.owner?
-    end
+      unless current_user && current_user.owner?
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
