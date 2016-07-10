@@ -33,7 +33,10 @@ class InstrumentsController < ApplicationController
 
     respond_to do |format|
       if @instrument.save
-        current_user.toggle! :owner
+        if current_user.owner == false
+          current_user.owner = current_user.toggle! (:owner)
+        else
+        end
         format.html { redirect_to @instrument, notice: 'Instrument was successfully created.' }
         format.json { render :show, status: :created, location: @instrument }
       else
