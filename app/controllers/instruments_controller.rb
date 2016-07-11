@@ -28,14 +28,10 @@ class InstrumentsController < ApplicationController
   def create
     @instrument = Instrument.new(instrument_params)
     @instrument.owner_id = current_user.id
-
+    
     respond_to do |format|
       if @instrument.save
-        Owner.create(owner_id:current_user.id, name: current_user.name, email: current_user.email)
-        if current_user.owner == false
-          current_user.owner = current_user.toggle! (:owner)
-        else
-        end
+          current_user.owner = true
         format.html { redirect_to @instrument, notice: 'Instrument was successfully created.' }
         format.json { render :show, status: :created, location: @instrument }
       else
@@ -73,11 +69,6 @@ class InstrumentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_instrument
       @instrument = Instrument.find(params[:id])
-    end
-
-    def must_be_owner
-      unless current_user && current_user.owner?
-      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

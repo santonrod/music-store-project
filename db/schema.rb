@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160710205640) do
+ActiveRecord::Schema.define(version: 20160711202132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,19 +23,12 @@ ActiveRecord::Schema.define(version: 20160710205640) do
     t.text     "details"
     t.integer  "price"
     t.integer  "owner_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "instruments", ["owner_id"], name: "index_instruments_on_owner_id", using: :btree
-
-  create_table "instruments_owners", id: false, force: :cascade do |t|
-    t.integer "instrument_id", null: false
-    t.integer "owner_id",      null: false
-  end
-
-  add_index "instruments_owners", ["instrument_id", "owner_id"], name: "index_instruments_owners_on_instrument_id_and_owner_id", using: :btree
-  add_index "instruments_owners", ["owner_id", "instrument_id"], name: "index_instruments_owners_on_owner_id_and_instrument_id", using: :btree
+  add_index "instruments", ["user_id"], name: "index_instruments_on_user_id", using: :btree
 
   create_table "owners", force: :cascade do |t|
     t.string   "name"
@@ -46,8 +39,10 @@ ActiveRecord::Schema.define(version: 20160710205640) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string   "name",                   default: "",    null: false
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
+    t.boolean  "owner",                  default: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -65,8 +60,6 @@ ActiveRecord::Schema.define(version: 20160710205640) do
     t.datetime "locked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name",                   default: "",    null: false
-    t.boolean  "owner",                  default: false
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
