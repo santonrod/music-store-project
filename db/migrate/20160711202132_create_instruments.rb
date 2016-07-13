@@ -6,9 +6,8 @@ class CreateInstruments < ActiveRecord::Migration
       t.integer :year
       t.text :details
       t.integer :price
-      t.integer :owner_id
       
-      t.belongs_to :user, index: true
+      t.references :user, index: true
 
       t.timestamps null: false
     end

@@ -27,7 +27,7 @@ class InstrumentsController < ApplicationController
   # POST /instruments.json
   def create
     @instrument = Instrument.new(instrument_params)
-    @instrument.owner_id = current_user.id
+    @instrument.user_id = current_user.id
     
     respond_to do |format|
       if @instrument.save
@@ -73,6 +73,6 @@ class InstrumentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def instrument_params
-      params.require(:instrument).permit(:category, :brand, :year, :details, :price, :owner_id)
+      params.require(:instrument).permit(:category, :brand, :year, :details, :price, :user_id)
     end
 end
