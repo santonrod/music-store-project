@@ -2,7 +2,7 @@ class PagesController < ApplicationController
 
   def index
     if user_signed_in?
-      redirect_to instruments_path
+      redirect_to user_instruments_url(current_user)
     end
   end
 

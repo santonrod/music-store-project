@@ -31,6 +31,6 @@
 <% else %>
 <% end %> 
 
-<%= link_to 'Back', instruments_path %>
+<%= link_to 'Back', user_instruments_path(@instrument) %>
 
-<%= link_to 'Owners Page', owners_path %>
+<%= link_to 'Owners Details', user_instruments_path(@instrument)  %>

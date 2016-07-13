@@ -60,7 +60,7 @@ class InstrumentsController < ApplicationController
   def destroy
     @instrument.destroy
     respond_to do |format|
-      format.html { redirect_to instruments_url, notice: 'Instrument was successfully destroyed.' }
+      format.html { redirect_to user_instruments_path(@instrument), notice: 'Instrument was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

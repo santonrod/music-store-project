@@ -1,6 +1,6 @@
 <h1>Editing Instrument</h1>
 
-<%= render 'form' %>
+<%= render 'edit_form' %>
 
 <%= link_to 'Show', @instrument %> |
-<%= link_to 'Back', instruments_path %>
+<%= link_to 'Back', user_instruments_path(@instrument) %>
