@@ -18,8 +18,17 @@ class UsersController < Devise::RegistrationsController
 
   # DELETE /resource
    def destroy
-       super
+    super
    end
+
+   def show
+    @user = User.find(params[:id])
+
+   end 
+
+  def index
+    super
+  end  
 
  protected
 

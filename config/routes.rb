@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   
   devise_for :users, :controllers => { :registrations => 'users' } 
 
+  devise_scope :user do
+    get 'users/:id' => 'users#show', :as => :users
+end
+
     resources :users do
       resources :instruments, shallow: true
     end  
