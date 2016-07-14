@@ -10,6 +10,30 @@
   <%= @user.email %>
 </p>
 
+<table>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Brand</th>
+      <th>Year</th>
+      <th>Details</th>
+      <th>Price</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+<p>
+ <tbody>
+    <% @user.instruments.each do |instrument| %>
+      <tr>
+        <td><%= instrument.category %></td>
+        <td><%= instrument.brand %></td>
+        <td><%= instrument.year %></td>
+        <td><%= instrument.details %></td>
+        <td><%= instrument.price %></td>
+        <% end %>
+      <tr>
+<table>        
 <p>
 
 <%= link_to 'Back',user_instruments_path(current_user) %>
