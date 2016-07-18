@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160711202132) do
+ActiveRecord::Schema.define(version: 20160718045127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "appointments", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone"
+    t.text     "location"
+    t.datetime "pickup"
+    t.integer  "instrument_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "appointments", ["instrument_id"], name: "index_appointments_on_instrument_id", using: :btree
 
   create_table "instruments", force: :cascade do |t|
     t.string   "category"
@@ -23,8 +36,10 @@ ActiveRecord::Schema.define(version: 20160711202132) do
     t.text     "details"
     t.integer  "price"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.datetime "pickup_time"
+    t.boolean  "purchased",   default: false
   end
 
   add_index "instruments", ["user_id"], name: "index_instruments_on_user_id", using: :btree
@@ -66,4 +81,5 @@ ActiveRecord::Schema.define(version: 20160711202132) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
+  add_foreign_key "appointments", "instruments"
 end
