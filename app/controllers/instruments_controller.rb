@@ -28,7 +28,8 @@ class InstrumentsController < ApplicationController
   def create
     @instrument = Instrument.new(instrument_params)
     @instrument.user_id = current_user.id
-    
+
+
     respond_to do |format|
       if @instrument.save
           current_user.owner = true

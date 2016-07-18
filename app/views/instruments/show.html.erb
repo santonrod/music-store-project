@@ -34,3 +34,6 @@
 <%= link_to 'Back', user_instruments_path(@instrument) %>
 
 <%= link_to 'Owners Details', user_path(@instrument.user_id)  %>
+
+<%= link_to 'Purchase', new_instrument_appointment_path(@instrument)  %>
+

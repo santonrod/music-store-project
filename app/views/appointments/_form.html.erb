@@ -31,10 +31,10 @@
     <%= f.label :pickup %><br>
     <%= f.datetime_select :pickup %>
   </div>
-  <div class="field">
-    <%= f.label :instrument_id %><br>
-    <%= f.text_field :instrument_id %>
-  </div>
+
+
+<%= f.hidden_field :instrument_id, :value => @instrument_id %>
+
   <div class="actions">
     <%= f.submit %>
   </div>
