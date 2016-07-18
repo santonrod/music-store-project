@@ -24,14 +24,13 @@
     <%= f.text_field :phone %>
   </div>
   <div class="field">
-    <%= f.label :location %><br>
+    <%= f.label "Address" %><br>
     <%= f.text_area :location %>
   </div>
   <div class="field">
-    <%= f.label :pickup %><br>
+    <%= f.label "Pickup Time" %><br>
     <%= f.datetime_select :pickup %>
   </div>
-
 
 <%= f.hidden_field :instrument_id, :value => @instrument_id %>
 
