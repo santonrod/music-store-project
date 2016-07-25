@@ -2,7 +2,7 @@
 
 <h1>Instruments for Sale!</h1>
 
-<table>
+<table class= 'table table-bordered'>
   <thead>
     <tr>
       <th>Category</th>
@@ -10,7 +10,6 @@
       <th>Year</th>
       <th>Details</th>
       <th>Price</th>
-      <th>Purchase?</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,13 +17,11 @@
   <tbody>
     <% @instruments.each do |instrument| %>
       <tr>
-         <% if instrument.appointment != nil %>
         <td><%= instrument.category %></td>
         <td><%= instrument.brand %></td>
         <td><%= instrument.year %></td>
         <td><%= instrument.details %></td>
         <td><%= instrument.price %></td>
-        <td><%= instrument.purchased%></td>
         <td><%= link_to 'Show', instrument %></td>
 
 
@@ -37,11 +34,40 @@
 
 
       <tr>
-    <% end %>
 
   </tbody>
+
 </table>
 
+<h2>Purchased Instruments!</h2>
+<table class='table table-bordered'>
+  <thead>
+    <tr>
+      <th>Brand</th>
+      <th>Category</th>
+      <th>Purchaser</th>
+      <th>Purchase Date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+<tbody>
+    <% @instruments.each do |instrument| %>
+      <tr>
+         <% if instrument.appointment != nil %>
+        <td><%= instrument.brand %></td>
+         <td><%= instrument.category %></td>
+        <td><%= instrument.appointment.name %></td>
+        <td><%= instrument.appointment.pickup.strftime('%D') %></td>
+        <td><%= link_to 'Show', instrument %></td>
+
+        <% end %>
+        <% end %> 
+      <tr>
+
+  </tbody>
+
+</table>
 <br>
 
 <%= link_to 'New Instrument', new_user_instrument_path %>
