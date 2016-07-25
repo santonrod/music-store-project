@@ -15,7 +15,7 @@ class AppointmentsController < ApplicationController
   # GET /appointments/new
   def new
     @appointment = Appointment.new
-    @instrument = params[:instrument_id]
+    @instrument_id = params[:instrument_id]
   end
 
   # GET /appointments/1/edit
