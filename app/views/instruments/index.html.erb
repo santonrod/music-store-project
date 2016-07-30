@@ -16,7 +16,7 @@
 
   <tbody>
     <% @instruments.each do |instrument| %>
-      <tr>
+      <tr><% if instrument.appointment == nil %>
         <td><%= instrument.category %></td>
         <td><%= instrument.brand %></td>
         <td><%= instrument.year %></td>
@@ -31,7 +31,7 @@
         <% else %>
         <% end %>
         <% end %> 
-
+        <% end %>
 
       <tr>
 
