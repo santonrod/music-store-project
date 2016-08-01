@@ -14,7 +14,7 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments/new
   def new
-    @appointment = Appointment.new
+    @appointment = Appointment.new :name =>current_user.name, :email => current_user.email
     @instrument_id = params[:instrument_id]
   end
 

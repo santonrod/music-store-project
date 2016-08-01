@@ -16,6 +16,7 @@ class InstrumentsController < ApplicationController
   # GET /instruments/new
   def new
     @instrument = Instrument.new
+
   end
 
   # GET /instruments/1/edit
