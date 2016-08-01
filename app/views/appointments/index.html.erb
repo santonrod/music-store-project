@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Appointments</h1>
+<h1> My Appointments</h1>
 
-<table>
+<table class='table table-bordered'>
   <thead>
     <tr>
       <th>Name</th>
@@ -22,11 +22,15 @@
         <td><%= appointment.email %></td>
         <td><%= appointment.phone %></td>
         <td><%= appointment.location %></td>
-        <td><%= appointment.pickup %></td>
-        <td><%= appointment.instrument %></td>
-        <td><%= link_to 'Show', appointment %></td>
-        <td><%= link_to 'Edit', edit_appointment_path(appointment) %></td>
-        <td><%= link_to 'Destroy', appointment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= appointment.pickup.strftime('%D') %></td>
+         <td><%= appointment.instrument.category%></td>
+         <td><%= link_to 'Show', appointment %></td>
+        
+        <% if current_user.admin %>
+          <td><%= link_to 'Edit', edit_instrument_path(instrument) %></td>
+          <td><%= link_to 'Destroy', instrument, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% else %>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +38,3 @@
 
 <br>
 
-<%= link_to 'New Appointment', new_appointment_path %>

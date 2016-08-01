@@ -10,7 +10,7 @@
   <%= @user.email %>
 </p>
 
-<table>
+<table class='table table-bordered'>
   <thead>
     <tr>
       <th>Category</th>
@@ -31,6 +31,11 @@
         <td><%= instrument.year %></td>
         <td><%= instrument.details %></td>
         <td><%= instrument.price %></td>
+        <% if instrument.appointment == nil %>
+          <td><%= link_to 'Purchase!', instrument %></td>
+        <% else %>
+          <td> Purchased on <%= instrument.appointment.pickup.strftime('%D') %></td>
+        <% end %>
         <% end %>
       <tr>
 <table>        

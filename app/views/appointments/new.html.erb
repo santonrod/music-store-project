@@ -2,4 +2,4 @@
 
 <%= render 'form', :locals => {instrument_id: @instrument_id} %>
 
-<%= link_to 'Back', instruments_path %>
+<%= link_to 'Back', user_instruments_path(current_user) %>

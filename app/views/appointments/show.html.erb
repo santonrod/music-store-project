@@ -27,5 +27,8 @@
 
 <p>
 
-<%= link_to 'Edit', edit_appointment_path(@appointment) %> |
-<%= link_to 'Back', appointments_path %>
+<% if current_user.admin %>
+<%= link_to 'Edit', edit_appointment_path(@appointment) %> 
+<% end %>
+
+<%= link_to 'Back', appointments_url %>
