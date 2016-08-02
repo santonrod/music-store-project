@@ -25,3 +25,35 @@
 .alert-notice {
   @extend .alert-info;
   }
+
+#background-image {
+  background-image: image-url("frontpage.jpeg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+} 
+
+.jumbotron {
+  background-color: rgba(0, 0, 0, 0.0);
+} 
+
+.centered {
+  text-align: center;
+}
+
+.title {
+  font-family: 'Oswald', sans-serif-bold;
+  color: black;
+}
+
+#logout {
+  color: black;
+}
+
+#white-button {
+  color: white;
+}
+
+th {
+  text-align: center;
+}
+

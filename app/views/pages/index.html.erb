@@ -1,17 +1,26 @@
-<% content_for :top_content do %>
-  <div class="jumbotron">
-    <div class="container">
-      <h1>Stefan's Music Store!</h1>
-      <p>Register or Sign In to get started.</p>
-      <p>
-        <%= link_to 'Register', new_user_registration_path, class: 'btn btn-primary btn-lg' %>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+  </head>
+  <body id="background-image">
+    <% content_for :top_content do %>
+      <div class="jumbotron title">
+        <div class="container">
+          <h1>Stefan's Music Store!</h1>
+            <p>Register or Sign In to start shopping.</p>
+            <p>
+              <p>
+                <%= link_to 'Register', new_user_registration_path, class: 'btn btn-primary btn-lg', id: "white-button" %>
 
-        <%= link_to 'Sign In', user_session_path, class: 'btn btn-primary btn-lg' %>
-      
-        <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
-
-      </p>
-    </div>
-  </div>
-<% end %>
+                <%= link_to 'Sign In', user_session_path, class: 'btn btn-primary btn-lg', id: "white-button" %>
+              </p>
+            <p>
+              <li><%= link_to  'Log out', destroy_user_session_path, method: :delete, id: "logout"%></li>
+            </p>
+          </p>
+        </div>
+      </div>
+    </body>
+  <% end %>
+</html>
 
