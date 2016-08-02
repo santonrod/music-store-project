@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<p><strong>
+<%= link_to (@instrument.user.name) + '\'s Profile' , user_path(@instrument.user_id)  %>
+</strong>
+</p>
+
 <p>
   <strong>Category:</strong>
   <%= @instrument.category %>
@@ -29,16 +34,15 @@
 <%= image_tag @instrument.avatar.url(:medium) %>
 </p>
 
-<% if @instrument.user_id == current_user.id %>
-  <td><%= link_to 'Edit', edit_instrument_path(@instrument) %></td>
-  <td><%= link_to 'Destroy', @instrument, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-<% else %>
-<% end %> 
-
 <%= link_to 'Back', user_instruments_path(@instrument) %>
 
-<%= link_to 'Owners Details', user_path(@instrument.user_id)  %>
- <% if @instrument.appointment == nil %>
+<% if @instrument.user_id == current_user.id %>
+  <td><%= link_to 'Edit', edit_instrument_path(@instrument) %></td>
+  <td><%= link_to 'Delete', @instrument, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<% else %>
+<% end %> 
+<p>
+ <% if @instrument.appointment == nil && @instrument.user_id != current_user.id  %>
 <%= link_to 'Purchase', new_instrument_appointment_path(@instrument)  %>
 <% end %>
-
+</p>

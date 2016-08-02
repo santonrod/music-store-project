@@ -31,7 +31,10 @@
     <%= f.label :price %><br>
     <%= f.number_field :price %>
   </div>
-
+   <div class="field">
+    <%= f.label "Edit picture" %><br>
+    <%= f.file_field :avatar %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
