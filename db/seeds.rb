@@ -13,6 +13,6 @@
   user.save!
 
   3.times do
-    instrument = Instrument.create(user_id: user.id, category: Faker::Music.instrument, brand: Faker::StarWars.vehicle, year: Faker::Number.between(1960, 2015), details: Faker::Hipster.sentence(5), price: Faker::Number.between(50, 5000))
+    instrument = Instrument.create(user_id: user.id, category: Faker::Music.instrument, brand: Faker::StarWars.vehicle, year: Faker::Number.between(1960, 2015), details: Faker::Hipster.sentence(5), price: Faker::Number.between(50, 5000), avatar:Faker::Avatar.image)
   end
 end

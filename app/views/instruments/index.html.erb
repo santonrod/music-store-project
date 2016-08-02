@@ -10,6 +10,7 @@
       <th>Year</th>
       <th>Details</th>
       <th>Price</th>
+      <th>Show</th>
     </tr>
   </thead>
 
@@ -21,8 +22,9 @@
         <td><%= instrument.year %></td>
         <td><%= instrument.details %></td>
         <td><%= instrument.price %></td>
-        <td><%= link_to 'Show', instrument %></td>
-
+        <td><%= link_to instrument do %>
+   <%= image_tag instrument.avatar.url(:thumb) %>
+<% end %>
 
         <% if instrument.user_id == current_user.id %>
           <td><%= link_to 'Edit', edit_instrument_path(instrument) %></td>
