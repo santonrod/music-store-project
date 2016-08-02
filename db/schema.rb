@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160729163308) do
+ActiveRecord::Schema.define(version: 20160729202112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,9 +25,12 @@ ActiveRecord::Schema.define(version: 20160729163308) do
     t.integer  "instrument_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "buyer"
+    t.integer  "user_id"
   end
 
   add_index "appointments", ["instrument_id"], name: "index_appointments_on_instrument_id", using: :btree
+  add_index "appointments", ["user_id"], name: "index_appointments_on_user_id", using: :btree
 
   create_table "instruments", force: :cascade do |t|
     t.string   "category"
