@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'paperclip', '~> 5.0.0'
 gem 'faker', '~> 1.6', '>= 1.6.5'
 gem 'awesome_print'
 gem 'pg'
