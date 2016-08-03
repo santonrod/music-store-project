@@ -1,10 +1,11 @@
+
 <div>
 <h1 class="centered title">Previously Purchased Instruments!</h1>
 </div>
 
-<div class= "row">
+<div class= "table table-responsive">
  <% @instruments.each do |instrument| %>
-  <div class= "col-sm-3 title" id= "purchase bar">
+  <div class= "col-sm-3 title centered" id= "purchase bar">
     <% if instrument.appointment != nil %>
       <div class= "col-sm-10">
         <%= link_to instrument do %>
@@ -12,7 +13,7 @@
         <% end %>  
         <div class="row"><%= instrument.category %></div>
         <div class="row"> Purchased by: <%= instrument.appointment.name %></div>
-        <div class="row"> Purchased on:<%= instrument.appointment.pickup.strftime('%D') %></div>     
+        <div class="row"> Purchased on: <%= instrument.appointment.pickup.strftime('%D') %></div>     
       </div>
     <% end %>  
   </div>
@@ -23,8 +24,8 @@
   <h1 class="centered title"> Instruments for Sale!</h1>
 
 <% @instruments.each do |instrument| %>
-  <div class= "col-md-6 title panel panel-default" id= "instrument_index">
-      <% if instrument.appointment == nil %>
+  <% if instrument.appointment == nil %>
+    <div class= "col-md-6 title panel panel-default centered" id= "instrument_index">
       <div class= "col-md-7">
           <%= link_to instrument do %>
           <%= image_tag instrument.avatar.url(:medium) %>
