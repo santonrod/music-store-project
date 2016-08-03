@@ -1,72 +1,53 @@
-<h1 class="centered title"> Instruments for Sale!</h1>
+<div>
+<h1 class="centered title">Previously Purchased Instruments!</h1>
+</div>
 
-<table class= 'table table-bordered centered title'>
-  <thead>
-    <tr>
-      <th>Category</th>
-      <th>Brand</th>
-      <th>Year</th>
-      <th>Details</th>
-      <th>Price</th>
-      <th>Show</th>
-    </tr>
-  </thead>
+<div class= "row">
+ <% @instruments.each do |instrument| %>
+  <div class= "col-sm-3 title" id= "purchase bar">
+    <% if instrument.appointment != nil %>
+      <div class= "col-sm-10">
+        <%= link_to instrument do %>
+        <%= image_tag instrument.avatar.url(:thumb) %>
+        <% end %>  
+        <div class="row"><%= instrument.category %></div>
+        <div class="row"> Purchased by: <%= instrument.appointment.name %></div>
+        <div class="row"> Purchased on:<%= instrument.appointment.pickup.strftime('%D') %></div>     
+      </div>
+    <% end %>  
+  </div>
+ <% end %>
+</div>
 
-  <tbody>
-    <% @instruments.each do |instrument| %>
-      <tr><% if instrument.appointment == nil %>
-        <td><%= instrument.category %></td>
-        <td><%= instrument.brand %></td>
-        <td><%= instrument.year %></td>
-        <td><%= instrument.details %></td>
-        <td><%= instrument.price %></td>
-        <td><%= link_to instrument do %>
-   <%= image_tag instrument.avatar.url(:thumb) %>
-<% end %>
+<div>
+  <h1 class="centered title"> Instruments for Sale!</h1>
 
+<% @instruments.each do |instrument| %>
+  <div class= "col-md-6 title panel panel-default" id= "instrument_index">
+      <% if instrument.appointment == nil %>
+      <div class= "col-md-7">
+          <%= link_to instrument do %>
+          <%= image_tag instrument.avatar.url(:medium) %>
+        <% end %>  
+      </div>
+      <div class= "col-md-4 container-wrapper">  
+        <div class="row"><%= instrument.category %></div>
+        <div class="row"><%= instrument.brand %></div>
+        <div class="row">$<%= instrument.price %></div>
+      </div>
+      <div>
         <% if instrument.user_id == current_user.id %>
-          <td><%= link_to 'Edit', edit_instrument_path(instrument) %></td>
-          <td><%= link_to 'Destroy', instrument, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <%= link_to 'Edit', edit_instrument_path(instrument) %>
+          <%= link_to 'Destroy', instrument, method: :delete, data: { confirm: 'Are you sure?' } %>
         <% else %>
         <% end %>
-        <% end %> 
-        <% end %>
+      <% end %>
+      </div>
+  </div> 
+<% end %>    
+</div>
 
-      <tr>
-
-  </tbody>
-
-</table>
-
-<h2  class="centered title">Purchased Instruments!</h2>
-<table class='table table-bordered centered title'>
-  <thead>
-    <tr>
-      <th>Brand</th>
-      <th>Category</th>
-      <th>Purchaser</th>
-      <th>Purchase Date</th>
-    </tr>
-  </thead>
-
-<tbody>
-    <% @instruments.each do |instrument| %>
-      <tr>
-         <% if instrument.appointment != nil %>
-        <td><%= instrument.brand %></td>
-         <td><%= instrument.category %></td>
-        <td><%= instrument.appointment.name %></td>
-        <td><%= instrument.appointment.pickup.strftime('%D') %></td>
-        <td><%= link_to 'Show', instrument %></td>
-
-        <% end %>
-        <% end %> 
-      <tr>
-
-  </tbody>
-
-</table>
-<br>
-
-<%= link_to 'New Instrument', new_user_instrument_path %>
-<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+<div class="row">
+  <%= link_to 'New Instrument', new_user_instrument_path %>
+  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+</div>

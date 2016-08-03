@@ -33,7 +33,7 @@
 } 
 
 .jumbotron {
-  background-color: rgba(0, 0, 0, 0.0);
+  background-color: transparent;
 } 
 
 .centered {
@@ -43,6 +43,7 @@
 .title {
   font-family: 'Oswald', sans-serif-bold;
   color: black;
+  text-align: center;
 }
 
 #logout {
@@ -56,4 +57,25 @@
 th {
   text-align: center;
 }
+
+.panel {
+  border-style: solid;
+  border-color: black;
+  background-color: transparent;
+  border-radius:20px;
+  padding-bottom: 10px;
+}
+
+.container-wrapper {
+    margin-top: 75px;
+}
+
+#instrument_index {
+  font-size: 200%;
+}
+
+#purchase_bar {
+  font-size: 50%;
+}
+
 
