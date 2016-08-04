@@ -62,7 +62,6 @@ th {
   border-color: black;
   background-color: transparent;
   border-radius:20px;
-  padding-bottom: 10px;
 }
 
 .container-wrapper {
@@ -71,10 +70,15 @@ th {
 
 #instrument_index {
   font-size: 200%;
+  margin:20px;
+  margin-left: 60px
 }
 
 #purchase_bar {
-  font-size: 50%;
+  font-size: 75%;
 }
 
+.imgContainer{
+    float:left;
+}
 

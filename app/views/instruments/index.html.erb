@@ -1,54 +1,99 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Instrument Index</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+  .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      height: 100%
+      width: 70%;
+      margin: auto;
+  }
+  </style>
+</head>
+<body>
 <div>
-<h1 class="centered title">Previously Purchased Instruments!</h1>
+  <h1 class="centered title">Previously Purchased Instruments!</h1>
 </div>
 
-<div class= "table table-responsive">
- <% @instruments.each do |instrument| %>
-  <div class= "col-sm-3 title centered" id= "purchase bar">
-    <% if instrument.appointment != nil %>
-      <div class= "col-sm-10">
-        <%= link_to instrument do %>
-        <%= image_tag instrument.avatar.url(:thumb) %>
-        <% end %>  
-        <div class="row"><%= instrument.category %></div>
-        <div class="row"> Purchased by: <%= instrument.appointment.name %></div>
-        <div class="row"> Purchased on: <%= instrument.appointment.pickup.strftime('%D') %></div>     
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    
+    <div class="item active">
+      <% instrument = @sold_instrument.each_slice(4).to_a %> 
+      <div class="item centered">
+        <% for i in (0..instrument[0].length-1) %> 
+          <img style="margin-right:60px" <%= image_tag instrument[0][i].avatar.url(:thumb) %></img>
+        <% end %>
       </div>
-    <% end %>  
+    </div>
+
+    <div class="item">  
+      <div class="item centered">
+        <% for i in (0..instrument[1].length-1) %> 
+          <img style="margin-right:60px" <%= image_tag instrument[1][i].avatar.url(:thumb) %></img>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="item">  
+      <div class="item centered">
+        <% for i in (0..instrument[2].length-1) %> 
+          <img style="margin-right:60px"  <%= image_tag instrument[2][i].avatar.url(:thumb) %></img>
+        <% end %>
+      </div>
+    </div>
+  
   </div>
- <% end %>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
 </div>
+    
 
 <div>
   <h1 class="centered title"> Instruments for Sale!</h1>
-
-<% @instruments.each do |instrument| %>
-  <% if instrument.appointment == nil %>
-    <div class= "col-md-6 title panel panel-default centered" id= "instrument_index">
-      <div class= "col-md-7">
-          <%= link_to instrument do %>
-          <%= image_tag instrument.avatar.url(:medium) %>
-        <% end %>  
-      </div>
-      <div class= "col-md-4 container-wrapper">  
-        <div class="row"><%= instrument.category %></div>
-        <div class="row"><%= instrument.brand %></div>
-        <div class="row">$<%= instrument.price %></div>
-      </div>
-      <div>
-        <% if instrument.user_id == current_user.id %>
-          <%= link_to 'Edit', edit_instrument_path(instrument) %>
-          <%= link_to 'Destroy', instrument, method: :delete, data: { confirm: 'Are you sure?' } %>
-        <% else %>
-        <% end %>
-      <% end %>
-      </div>
-  </div> 
-<% end %>    
-</div>
-
-<div class="row">
+  <div class="row">
   <%= link_to 'New Instrument', new_user_instrument_path %>
   <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
 </div>
+  <% @instruments.each do |instrument| %>
+    <% if instrument.appointment == nil %>
+      <div class= "col-md-5 title panel panel-default centered" id= "instrument_index">
+        <div class= "col-md-7">
+            <%= link_to instrument do %>
+            <%= image_tag instrument.avatar.url(:medium) %>
+          <% end %>  
+        </div>
+        <div class= "col-md-4 container-wrapper">  
+          <div class="row"><%= instrument.category %></div>
+          <div class="row"><%= instrument.brand %></div>
+          <div class="row">$<%= instrument.price %></div>
+          <% if instrument.user_id == current_user.id %>
+            <div class="row" id="purchase_bar"><%= link_to 'Edit Post', edit_instrument_path(instrument) %></div>
+            <div class="row" id="purchase_bar"><%= link_to 'Remove Post', instrument, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+          <% else %>
+          <% end %>
+        <% end %>
+      </div>
+  </div> 
+  <% end %>    
+</div>
+
+</body>
+</html>

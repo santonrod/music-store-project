@@ -6,7 +6,14 @@ class InstrumentsController < ApplicationController
   # GET /instruments.json
   def index
     @instruments = Instrument.all
-  end
+    @sold_instrument = []
+    @instruments.each do |instrument|
+        if instrument.appointment != nil
+          @sold_instrument << instrument
+        end  
+      end
+    @sold_instrument.sort! {|x, y| y <=> x}
+   end
 
   # GET /instruments/1
   # GET /instruments/1.json
